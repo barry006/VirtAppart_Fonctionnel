@@ -12,58 +12,44 @@ namespace SojaExiles
 		public bool open;
 		public Transform Player;
 
-		public bool b = true;
-		public bool b2 = true;
-
-
 		void Start()
 		{
-			
 			open = false;
 		}
-		/*
-		 void Update()
+
+		void OnMouseOver()
 		{
-			if (Player)
 			{
-				Debug.Log("wazaaa");
-				float dist = Vector3.Distance(Player.position, transform.position);
-				Debug.Log(dist);
-				if (dist < 6 && open == false)
+				if (Player)
 				{
-					StartCoroutine(opening());
-				}
-				else if (dist > 6 && open == true)
-				{
-					StartCoroutine(closing());
-				}
-			}
-		}
-		*/
+					float dist = Vector3.Distance(Player.position, transform.position);
+					if (dist < 15)
+					{
+						if (open == false)
+						{
+							if (Input.GetMouseButtonDown(0))
+							{
+								StartCoroutine(opening());
+							}
+						}
+						else
+						{
+							if (open == true)
+							{
+								if (Input.GetMouseButtonDown(0))
+								{
+									StartCoroutine(closing());
+								}
+							}
 
-		public void OpenCLoseDoors()
-        {
+						}
 
-			if (b2)
-			{
-				if (b)
-				{
-					b2 = false;
-					StartCoroutine(opening());
-					b = !b;
-				}
-				else
-				{
-					b2 = false;
-					StartCoroutine(closing());
-					b = !b;
+					}
 				}
 
 			}
+
 		}
-
-
-
 
 		IEnumerator opening()
 		{
@@ -71,8 +57,6 @@ namespace SojaExiles
 			openandclose.Play("Opening");
 			open = true;
 			yield return new WaitForSeconds(.5f);
-			b2 = true;
-
 		}
 
 		IEnumerator closing()
@@ -81,9 +65,6 @@ namespace SojaExiles
 			openandclose.Play("Closing");
 			open = false;
 			yield return new WaitForSeconds(.5f);
-			b2 = true;
-
-
 		}
 
 
