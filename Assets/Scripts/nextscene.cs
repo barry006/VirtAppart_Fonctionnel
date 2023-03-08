@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class nextscene : MonoBehaviour
 {
     [SerializeField] Light lighting;
-    // Conservez l'objet d'éclairage lors du changement de scène
+    // Conservez l'objet d'Ã©clairage lors du changement de scÃ©ne
     
     [SerializeField] string OtherSceneName;
 
